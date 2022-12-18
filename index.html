@@ -1,0 +1,101 @@
+<html lang="en" class="dark ">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./style.css" rel="stylesheet">
+    <script src="./app.js"></script>
+    <title>shadlle APP</title>
+    <style>
+        #checkbox:checked + label .switch-ball{
+            background-color: white;
+            transform: translateX(20px);
+            transition: transform 0.3s linear;
+        }
+    </style>
+</head>
+
+
+<body class="bg-[#f8fafc] dark:bg-[#0f172a]">
+    <section class="container mx-auto px-4">
+
+        <h1 class="text-center text-3xl font-bold p-3 mt-5 dark:text-white">Check and optimize your send</h1>
+        <div class="p-16 grid grid-cols-2 justify-items-center justify-center">
+            <div class="absolute flex space-x-1">
+                <span class="text-xs font-extralight dark:text-white">Light </span>
+                <div >
+                    <input type="checkbox" name="" id="checkbox" class="hidden" />
+                    <label for="checkbox" class="cursor-pointer switch-ball">
+                      <div class="w-9 h-5 flex items-center bg-gray-300 rounded-full p2">
+                        <div class="w-4 h-4 bg-white rounded-full shadow switch-ball"></div>
+                      </div>
+                    </label>
+                  </div>
+                <span class="text-xs font-semibold dark:text-white">Dark</span>
+            </div>
+            
+            <!-- BEGIN REMOVE SPAM WORDS -->
+            <div class="flex flex-col justify-center w-[30rem]">
+                <div class="flex flew-row justify-between items-center">
+                    <label class="text-center text font-bold pt-0 pb-5 mt-5 dark:text-white" for="tag-names">Remove spamy words:</label>
+                    <div class="flex flew-row gap-3">
+                        <div>
+                            <h1 class="text-red-600 font-bold" id="text-status"></h1>
+                        </div>
+                        <select name="tag-names" id="tag-names" class="border-[2px] w-[4rem] h-[2rem] border-[#94a3b8] ">
+                            <option value=""></option>
+                            <option value="p">P</option>
+                            <option value="div">div</option>
+                        </select>
+                        <button class="p-1 border-[2px] w-[2.5rem] h-[2rem] btn-OK border-[#94a3b8] dark:text-white"></buttonclass>GO</button>
+                    </div>
+                </div>
+
+                <textarea
+                    class="p-6 drop-shadow-md rounded-md border-[1.5px] outline-blue-500 border-blue-500 w-[30rem] h-96 overflow-x-hidden bg-blue-50 dark:bg-[#334155]  max-w-lg whitespace-nowrap dark:text-white"
+                    id="text-area" placeholder="Put spam text here ..."></textarea>
+                <div class="flex justify-between gap-1 mt-[1.2rem]">
+                    <button
+                        class="p-1 drop-shadow-md border-[1px] rounded-sm5 border-[#334155] w-[8rem] btn-remove font-[500] rounded-md bg-[#fecaca] ring-slate-900/10 dark:bg-pink-500 dark:text-white">Remove
+                        Spam</button>
+                    <button
+                        class="drop-shadow-md border-[1px] border-[#334155] w-[8rem] btn-copy font-[500] bg-[#ccfbf1] rounded-md dark:bg-[#2dd4bf]">Copy
+                        Text</button>
+                    <button
+                        class="drop-shadow-md border-[1px] border-[#334155] w-[8rem] btn-shuffli font-[500] bg-[#ccfbf1] rounded-md dark:bg-[#2dd4bf]">Shuffle</button>
+                </div>
+            </div>
+            <!-- END REMOVE SPAM WORDS -->
+
+            <!-- BEGIN SHUFFLE PARAMS  -->
+
+            <div class="mt-10">
+
+                <label class="text-center text font-bold p-2 pb-5 mt-5 dark:text-white " for="tag-names"> Shuffle params:</label>
+
+                <div>
+                    <textarea
+                    class="p-6 drop-shadow-md rounded-md border-[1.5px] outline-blue-500 border-blue-500 w-[24rem] h-96 overflow-x-hidden bg-[#fdf4ff] dark:bg-[#334155] max-w-lg whitespace-nowrap dark:text-white"
+                    id="text-area-params" placeholder="Put Params here ..."></textarea>
+                    <div class="flex justify-between gap-1 mt-[1.2rem]">
+                        <button
+                            class="drop-shadow-md border-[1px] p-1 rounded-md border-[#334155] w-[8rem] btn-copy-params font-[500] bg-[#ccfbf1] dark:bg-[#0ea5e9] dark:text-white ">Copy
+                            Text</button>
+                        <button
+                            class="drop-shadow-md border-[1px] rounded-md border-[#334155] w-[8rem] btn-shuffli-params font-[500] bg-[#ccfbf1] dark:bg-[#0ea5e9] dark:text-white">Shuffle</button>
+                    </div>
+                </div>
+
+            </div> 
+            <!-- END SHUFFLE PARAMS  -->
+
+        </div>
+        <div>
+            <h4 class="text-center font-bold mt-10 dark:text-white">Created by zakariae belkasmi [ECM3]. © 2022-2023</h4>
+        </div>
+    </section>
+</body>
+
+
+</html>
