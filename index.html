@@ -6,13 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="./style.css" rel="stylesheet">
     <script src="./app.js"></script>
-    <title>shadlle APP</title>
+    <script src="https://kit.fontawesome.com/d68526577a.js" crossorigin="anonymous"></script>
+    <title>Text optimizer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
     <style>
         #checkbox:checked + label .switch-ball{
             background-color: white;
             transform: translateX(20px);
             transition: transform 0.3s linear;
         }
+        .highlight {
+            background-color: yellow;
+            }
+        .previous{
+            background-color: #e2e2e2;
+            color: black;
+            width: 32px;
+            height: 32px;
+
+        }
+        
+        .round{
+            border-radius: 18%;
+
+        }    
     </style>
 </head>
 
@@ -20,7 +39,11 @@
 <body class="bg-[#f8fafc] dark:bg-[#0f172a]">
     <section class="container mx-auto px-4">
 
-        <h1 class="text-center text-3xl font-bold p-3 mt-5 dark:text-white">Check and optimize your send</h1>
+       
+
+        <h1 class="text-center text-3xl font-bold p-3 mt-5 dark:text-white">Check and optimize your  <span class="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-[#ff006e] relative inline-block">
+            <span class="relative text-white">send</span>
+          </span></h1>
         <div class="p-16 grid grid-cols-2 justify-items-center justify-center">
             <div class="absolute flex space-x-1">
                 <span class="text-xs font-extralight dark:text-white">Light </span>
@@ -38,52 +61,80 @@
             <!-- BEGIN REMOVE SPAM WORDS -->
             <div class="flex flex-col justify-center w-[30rem]">
                 <div class="flex flew-row justify-between items-center">
-                    <label class="text-center text font-bold pt-0 pb-5 mt-5 dark:text-white" for="tag-names">Remove spamy words:</label>
+                    <label class="text-center text font-bold pt-0 pb-5 mt-5 dark:text-white" for="tag-names">Remove spamy words </label>
                     <div class="flex flew-row gap-3">
-                        <div>
-                            <h1 class="text-red-600 font-bold" id="text-status"></h1>
+                        <div >
+                           <!-- <h1 class="flex justify-center items-center text-red-600 font-bold previous round" id="text-status" ><span class="text-2xl">&#8249;</span></h1> -->
+                            <i class="fa-solid fa-backward m-2 cursor-pointer dark:text-white" id="text-status"></i>
                         </div>
-                        <select name="tag-names" id="tag-names" class="border-[2px] w-[4rem] h-[2rem] border-[#94a3b8] ">
+                        <div>
+                            <i class="fa-solid fa-x text  m-2 cursor-pointer dark:text-white" id="resetText"></i>
+        
+                        </div>
+                        <select name="tag-names" id="tag-names" class="border-[0.122rem] w-[4rem] h-[2rem] rounded-sm border-[#000] ">
                             <option value=""></option>
                             <option value="p">P</option>
                             <option value="div">div</option>
                         </select>
-                        <button class="p-1 border-[2px] w-[2.5rem] h-[2rem] btn-OK border-[#94a3b8] dark:text-white"></buttonclass>GO</button>
+                        <button class="p-1 border-[0.1rem] w-[2.5rem] h-[2rem] ring-gray-900/10 rounded-sm btn-OK border-[#000] dark:bg-white dark:text-black"></buttonclass>GO</button>
                     </div>
                 </div>
 
                 <textarea
-                    class="p-6 drop-shadow-md rounded-md border-[1.5px] outline-blue-500 border-blue-500 w-[30rem] h-96 overflow-x-hidden bg-blue-50 dark:bg-[#334155]  max-w-lg whitespace-nowrap dark:text-white"
+                    class="caret-pink-500 text-md p-6 drop-shadow-md rounded-md border-[1.5px] outline-blue-500 border-blue-500 w-[30rem] h-96 overflow-x-hidden bg-blue-50 dark:bg-[#334155]  max-w-lg whitespace-nowrap dark:text-white "
                     id="text-area" placeholder="Put spam text here ..."></textarea>
                 <div class="flex justify-between gap-1 mt-[1.2rem]">
                     <button
-                        class="p-1 drop-shadow-md border-[1px] rounded-sm5 border-[#334155] w-[8rem] btn-remove font-[500] rounded-md bg-[#fecaca] ring-slate-900/10 dark:bg-pink-500 dark:text-white">Remove
-                        Spam</button>
-                    <button
-                        class="drop-shadow-md border-[1px] border-[#334155] w-[8rem] btn-copy font-[500] bg-[#ccfbf1] rounded-md dark:bg-[#2dd4bf]">Copy
-                        Text</button>
-                    <button
-                        class="drop-shadow-md border-[1px] border-[#334155] w-[8rem] btn-shuffli font-[500] bg-[#ccfbf1] rounded-md dark:bg-[#2dd4bf]">Shuffle</button>
+                        class="p-2.5 drop-shadow-md rounded-lg bofrder-[1px] text-sm  border-[#575a5e] w-[8.8rem] btn-remove font-[400] rounded-mds bg-blue-500 text-white ring-slate-900/10  dark:text-white dark:bg-[#c9184a]">Remove
+                        Spam
+                        <i class="fa-solid fa-scissors"></i>
+                    </button>
+                    <!--<button
+                        class="drop-shadow-md border-[1px] border-[#334155] w-[8rem] btn-copy font-[500] bg-[#ccfbf1] rounded-sm dark:bg-[#2dd4bf]">Copy
+                        Text</button>-->
+                        <button
+                        class="rounded-lg text-sm w-[8rem] hover:border-[0.1px] btn-copy font-[500] dark:hover:border-[0px] bg-white/0 text-slate-900 ring-1 ring-gray-900/10 hover:bg-white/25 hover:ringc-slate-900/15 hover:ring-slate-900/15  dark:hover:bg-white/25 dark:bg-slate-700 dark:text-slate-200">Copy
+                        Text     
+                        <i class="fa-regular fa-copy"></i>
+                       </button>
+                       <button
+                       class="rounded-lg text-sm w-[8rem] btn-shuffli hover:border-[0.1px] dark:hover:border-[0px] font-[500] bg-white/0 text-slate-900 ring-1 ring-gray-900/10 hover:bg-white/25 hover:rincg-slate-900/15 hover:ring-slate-900/15  dark:hover:bg-white/25 dark:bg-slate-700 dark:text-slate-200">Shuffle
+                       Text     
+                       <i class="fa-solid fa-shuffle"></i>
+                    </button>
+                        
+                    <!--<button
+                        class="drop-shadow-md hover:border-[0.1px] btn-shuffli border-[#334155] rounded-lg text-sm w-[8rem] btn-copy font-[500] bg-white/0 text-slate-900 ring-1 ring-gray-900/10 hover:bg-white/25 hover:ring-slate-900/15 hover:ring-slate-900/15dark:bg-[#2dd4bf]">Shuffle
+                        <i class="fa-solid fa-shuffle"></i>
+                    </button>-->
                 </div>
             </div>
             <!-- END REMOVE SPAM WORDS -->
 
             <!-- BEGIN SHUFFLE PARAMS  -->
 
-            <div class="mt-10">
-
-                <label class="text-center text font-bold p-2 pb-5 mt-5 dark:text-white " for="tag-names"> Shuffle params:</label>
-
-                <div>
+            <div class="mt-3.5">
+                <div class="flex flew-row justify-between items-center">
+                    <label class="text-center text font-bold  pb-5 mt-3  dark:text-white " for="tag-names"> Shuffle params </label>
+                    <i class="cursor-pointer fa-regular fa-floppy-disk mr-2"></i>
+                </div>
+                <div >
                     <textarea
-                    class="p-6 drop-shadow-md rounded-md border-[1.5px] outline-blue-500 border-blue-500 w-[24rem] h-96 overflow-x-hidden bg-[#fdf4ff] dark:bg-[#334155] max-w-lg whitespace-nowrap dark:text-white"
+                    class="p-6 drop-shadow-md rounded-md border-[1.5px] outline-blue-500 border-blue-500 w-[24rem] h-96 overflow-x-hidden bg-blue-50 dark:bg-[#334155] max-w-lg whitespace-nowrap dark:text-white"
                     id="text-area-params" placeholder="Put Params here ..."></textarea>
                     <div class="flex justify-between gap-1 mt-[1.2rem]">
                         <button
-                            class="drop-shadow-md border-[1px] p-1 rounded-md border-[#334155] w-[8rem] btn-copy-params font-[500] bg-[#ccfbf1] dark:bg-[#0ea5e9] dark:text-white ">Copy
-                            Text</button>
-                        <button
-                            class="drop-shadow-md border-[1px] rounded-md border-[#334155] w-[8rem] btn-shuffli-params font-[500] bg-[#ccfbf1] dark:bg-[#0ea5e9] dark:text-white">Shuffle</button>
+                        class="btn-copy-params p-2.5 rounded-lg text-sm w-[8rem] font-[500] bg-white/0 text-slate-900 ring-1 ring-slate-900/10 hover:bg-white/25 hover:ring-slate-900/15 hover:ring-slate-900/15 dark:hover:bg-white/25 dark:bg-slate-700 dark:text-slate-200 dark:border-transparent dardk:bg-blue-500 dardk:text-white">Copy
+                        Text     
+                        <i class="fa-regular fa-copy" ></i>
+                         </button>
+                         
+                        
+
+                         <button
+                         class="drop-shadow-md bborder-[0.5px] btn-shuffli-params border-[#334155] rounded-lg text-sm w-[8rem] btn-copy font-[500] bg-white/0 text-slate-900 ring-1 ring-slate-900/10 hover:bg-white/25 hover:ring-slate-900/15 dark:hover:bg-white/25 dark:bg-slate-700 dark:text-slate-200">Shuffle
+                         <i class="fa-solid fa-shuffle"></i>
+                     </button>
                     </div>
                 </div>
 
@@ -92,7 +143,7 @@
 
         </div>
         <div>
-            <h4 class="text-center font-bold mt-10 dark:text-white">Created by zakariae belkasmi [ECM3]. © 2022-2023</h4>
+            <h4 class=" text-center font-semibold mt-10 dark:text-white">Created by  zakariae belkasmi [ECM3]. © 2022-2023</h4>
         </div>
     </section>
 </body>
