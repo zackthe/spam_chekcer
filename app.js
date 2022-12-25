@@ -812,6 +812,9 @@ let btn_copy_params =  document.querySelector('.btn-copy-params');
 /* =========================== EVENT HANDLING =================================*/
 
 
+document.getElementById('text-area').addEventListener('paste',handlePaste)
+
+
 if(btn_copy_params){
     btn_copy_params.addEventListener('click',(e)=>{
     
@@ -824,10 +827,13 @@ if(btn_copy_params){
 if(btn_shuffli_params){
 
     btn_shuffli_params.addEventListener('click',(e)=>{
-    
+        console.log('helo')
+        console.log(localStorage.getItem('spamText'))
         let input_text = document.getElementById('text-area-params') ;
         input_text.select();
         shuffli_lheader(input_text)
+        
+
     })
 }
 
@@ -836,9 +842,14 @@ if(btn_remove){
 
     btn_remove.addEventListener('click',(e)=>{
 
+        console.log('helo');
+        console.log(localStorage.getItem('spamText'))
+
         for (let i = 0 ; i < spam_keyword_array.length ; i++ ){
 
             document.getElementById('text-area').value = document.getElementById('text-area').value.replace(spam_keyword_array[i],' ')
+            //document.getElementById('text-area').value = document.getElementById('text-area').value.replace(spam_keyword_array[i],`<span style='color:yellow'>${spam_keyword_array[i]}</span>`)
+
             
           }
 
@@ -878,19 +889,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
 })
 
+function reset(){
 
-function check_status(){
-
-    // check text if it contains spam words :
-
-    for (let i = 0 ; i < spam_keyword_array.length ; i++ ){
-
-        document.getElementById('text-area').value.includes(spam_keyword_array[i]) ? document.getElementById('text-status').textContent = 'spam' : document.getElementById('text-status').textContent = 'cool'
-        
-      }
-
+    document.getElementById('text-area').value = localStorage.getItem('spamText');
 
 }
+
+function resetText(){
+    document.getElementById('text-area').value = ' '
+}
+
+    document.getElementById('text-status').addEventListener('click',()=>{
+            reset();
+    })
+
+
+    document.getElementById('resetText').addEventListener('click',()=>{
+        resetText();
+})
+    
+
+
+
 
 
 
@@ -925,6 +945,71 @@ function add_tag(){
 }
 
 
+// highlight spam keywords : 
 
 
+function handlePaste(e) {
+    var clipboardData, pastedData;
+  
+    // Stop data actually being pasted into div
+    //e.stopPropagation();
+    //e.preventDefault();
+  
+    // Get pasted data via clipboard API
+    clipboardData = e.clipboardData || window.clipboardData;
+    pastedData = clipboardData.getData('Text');
+
+  
+    console.log(pastedData);
+    save(pastedData);
+  }
+
+
+function check_status(e){
+    var clipboardData, pastedData;
+  
+    // Stop data actually being pasted into div
+    //e.stopPropagation();
+    //e.preventDefault();
+  
+    // Get pasted data via clipboard API
+    clipboardData = e.clipboardData || window.clipboardData;
+    pastedData = clipboardData.getData('Text');
+  
+    console.log(pastedData);
+
+
+    // check text if it contains spam words :
+
+    for (let i = 0 ; i < spam_keyword_array.length ; i++ ){
+
+        
+        //document.getElementById('text-area').value = document.getElementById('text-area').value.replace(spam_keyword_array[i],' ');
+
+        //document.getElementById('text-area').value.includes(spam_keyword_array[i]) ? document.getElementById('text-status').textContent = 'spam' : document.getElementById('text-status').textContent = 'cool';
+        
+        pastedData.value.includes(spam_keyword_array[i]) ? console.log(true) : console.log(false) ;
+
+      }
+
+
+}
+
+function save(item){
+
+    localStorage.setItem('spamText',item)
+
+}
+
+function load(){
+    localStorage.getItem('spamText');
+}
+
+
+
+
+
+    
+
+ 
 }
