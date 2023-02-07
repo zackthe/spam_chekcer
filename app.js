@@ -794,7 +794,9 @@ let spam_keyword_array = [/\bKeyword\b/gi,
 /\bWeb traffic\b/gi,
 /\bWife\b/gi,
 /\bWork at home\b/gi,
-/\bWork from home\b/gi];
+/\bWork from home\b/gi,
+/\bdollar\b/gi,
+];
 
 let btn_remove = document.querySelector('.btn-remove');
 
@@ -808,11 +810,22 @@ let btn_shuffli_params =  document.querySelector('.btn-shuffli-params');
 
 let btn_copy_params =  document.querySelector('.btn-copy-params');
 
+let copy_ip = document.querySelector('.copy_ip');
 
 /* =========================== EVENT HANDLING =================================*/
 
 
 document.getElementById('text-area').addEventListener('paste',handlePaste)
+
+if(copy_ip){
+    copy_ip.addEventListener('click', (e)=>{
+
+        let input_text = document.getElementById('text-area-ip-copy') ;
+        input_text.select();
+        navigator.clipboard.writeText(input_text.value);
+
+    })
+}
 
 
 if(btn_copy_params){
@@ -907,12 +920,16 @@ function resetText(){
     document.getElementById('resetText').addEventListener('click',()=>{
         resetText();
 })
+
+
+document.getElementById('select_ip').addEventListener('click',()=>{
+    console.log('hello')
+    check_ip();
+})
+
+
+
     
-
-
-
-
-
 
 
 //check_status()
@@ -938,8 +955,16 @@ function add_tag(){
 
         selectElement = document.querySelector('#tag-names');
         output = selectElement.value;
+        if(output == 'p' || output == 'div'){ 
+
         document.getElementById('text-area').value = document.getElementById('text-area').value.replace(/^/gm, '<'+output+'>');
         document.getElementById('text-area').value = document.getElementById('text-area').value.replace(/$/gm,'</'+output+'>');
+
+        }
+        else{
+            document.getElementById('text-area').value = document.getElementById('text-area').value.replace(/^/gm,output);
+           document.getElementById('text-area').value = document.getElementById('text-area').value.replace(/$/gm,output);
+        }
 
         console.log(output)
 }
@@ -1004,6 +1029,32 @@ function save(item){
 function load(){
     localStorage.getItem('spamText');
 }
+
+
+}
+
+
+
+
+function check_ip(){
+
+    var ipv4RegexG = /(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)/g;
+
+    var result ;
+
+    result = document.getElementById('text-area-ip-select').value.match(ipv4RegexG); // returns ['192.168.0.1', '192.168.0.2']
+
+     
+
+    document.getElementById('text-area-ip-copy').value = result.join('\n'); 
+
+
+    document.getElementById('text-area-ip-select').value = ' ';
+    
+
+    console.log(result);
+    console.log(result.toString());
+
 
 
 
