@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="./style.css" rel="stylesheet">
-    <script src="./app.js"></script>
+    <link href="/dist/output.css" rel="stylesheet">
+    <script src="/app.js"></script>
     <script src="https://kit.fontawesome.com/d68526577a.js" crossorigin="anonymous"></script>
     <title>Text optimizer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -61,7 +61,7 @@
                 <div class="flex flew-row justify-between items-center">
                     <label class="text-center text font-bold pt-0 pb-5 mt-5 dark:text-white" for="tag-names">Remove spamy words </label>
                     <div class="flex flew-row gap-3">
-                        <div >
+                        <div>
                            <!-- <h1 class="flex justify-center items-center text-red-600 font-bold previous round" id="text-status" ><span class="text-2xl">&#8249;</span></h1> -->
                             <i class="fa-solid fa-backward m-2 cursor-pointer dark:text-white" id="text-status"></i>
                         </div>
@@ -73,6 +73,7 @@
                             <option value=""></option>
                             <option value="p">P</option>
                             <option value="div">div</option>
+                            <option value="[15LA]">[15LA]</option>
                         </select>
                         <button class="p-1 border-[0.1rem] w-[2.5rem] h-[2rem] ring-gray-900/10 rounded-sm btn-OK border-[#000] dark:bg-white dark:text-black"></buttonclass>GO</button>
                     </div>
@@ -109,38 +110,77 @@
             </div>
             <!-- END REMOVE SPAM WORDS -->
 
-            <!-- BEGIN SHUFFLE PARAMS  -->
+            <!-- BEGIN SELECT IPs -->
+            <div class="flex flex-col justify-center w-[36rem] mt-2 ml-16">
+               <label class="text-center text font-bold  pb-5 mt-3  dark:text-white " for="tag-names"> Extract IPs </label>
 
-            <div class="mt-3.5">
-                <div class="flex flew-row justify-between items-center">
-                    <label class="text-center text font-bold  pb-5 mt-3  dark:text-white " for="tag-names"> Shuffle params </label>
-                   <!-- <i class="cursor-pointer fa-regular fa-floppy-disk mr-2"></i> -->
-                </div>
-                <div >
-                    <textarea
-                    class="p-6 drop-shadow-md rounded-md border-[1.5px] outline-blue-500 border-blue-500 w-[24rem] h-[450px] overflow-x-hidden bg-blue-50 dark:bg-[#334155] max-w-lg whitespace-nowrap dark:text-white"
-                    id="text-area-params" placeholder="Put Params here ..."></textarea>
-                    <div class="flex justify-between gap-1 mt-[1.2rem]">
-                        <button
-                        class="btn-copy-params p-2.5 rounded-lg text-sm w-[8rem] font-[500] bg-white/0 text-slate-900 ring-1 ring-slate-900/10 hover:bg-white/25 hover:ring-slate-900/15 hover:ring-slate-900/15 dark:hover:bg-white/25 dark:bg-slate-700 dark:text-slate-200 dark:border-transparent dardk:bg-blue-500 dardk:text-white">Copy
-                        Text     
-                        <i class="fa-regular fa-copy" ></i>
-                         </button>
-                         
-                        
+                   <div  class="flex">
+                       <textarea
+                   class="caret-pink-500 text-md p-6 drop-shadow-md border-r-0 rounded-l-md border-[1.5px] outline-blue-500 border-blue-500 w-[20rem] h-[450px] overflow-x-hidden bg-blue-50 dark:bg-[#334155]  maxc-w-lg whitespace-nowrap dark:text-white "
+                   id="text-area-ip-select" placeholder="Put text with ips here ..."></textarea>
+                   <textarea
+                   class="caret-pink-500 text-md p-6 drop-shadow-md rounded-r-md border-[1.5px] outline-blue-500 border-blue-500 w-[20rem] h-[450px] overflow-x-hidden bg-blue-50 dark:bg-[#334155]  maxc-w-lg whitespace-nowrap dark:text-white "
+                   id="text-area-ip-copy"></textarea>
 
-                         <button
-                         class="drop-shadow-md bborder-[0.5px] btn-shuffli-params border-[#334155] rounded-lg text-sm w-[8rem] btn-copy font-[500] bg-white/0 text-slate-900 ring-1 ring-slate-900/10 hover:bg-white/25 hover:ring-slate-900/15 dark:hover:bg-white/25 dark:bg-slate-700 dark:text-slate-200">Shuffle
-                         <i class="fa-solid fa-shuffle"></i>
-                     </button>
-                    </div>
-                </div>
 
-            </div> 
-            <!-- END SHUFFLE PARAMS  -->
+                   </div>
+               
+               <div class="flex justify-around gap-1 mt-[1.2rem]">
+                   <button
+                       id='select_ip'
+                       class="p-2.5 drop-shadow-md rounded-lg bofrder-[1px] text-sm  border-[#575a5e] w-[8.8rem] btn-remove font-[400] rounded-mds bg-blue-500 text-white ring-slate-900/10  dark:text-white dark:bg-[#c9184a]">
 
+                       Select IPs
+                      
+                   </button>
+                   <!--<button
+                       class="drop-shadow-md border-[1px] border-[#334155] w-[8rem] btn-copy font-[500] bg-[#ccfbf1] rounded-sm dark:bg-[#2dd4bf]">Copy
+                       Text</button>-->
+                       <button
+                       
+                       class="copy_ip rounded-lg text-sm w-[8rem] hover:border-[0.1px] btn-copy font-[500] dark:hover:border-[0px] bg-white/0 text-slate-900 ring-1 ring-gray-900/10 hover:bg-white/25 hover:ringc-slate-900/15 hover:ring-slate-900/15  dark:hover:bg-white/25 dark:bg-slate-700 dark:text-slate-200">Copy
+                       IPs     
+                       <i class="fa-regular fa-copy"></i>
+                      </button>
+                 
+               </div>
+           </div>
+           <!-- END SELECT IPs -->
         </div>
-        <div>
+
+         <!-- BEGIN SHUFFLE PARAMS  -->
+      <!--  <div class="m-auto w-[50%]">
+        <div class="mt-3.5">
+            <div class="flex flew-row justify-between items-center">
+                <label class="text-center text font-bold  pb-5 mt-3  dark:text-white " for="tag-names"> Shuffle params </label>
+                <div>
+                    <i class="fa-solid fa-backward m-2 cursor-pointer dark:text-white" id="params-status"></i>
+                </div>
+            </div>
+            <div>
+                <textarea
+                class="p-6 drop-shadow-md rounded-md border-[1.5px] outline-blue-500 border-blue-500 w-[24rem] h-[450px] overflow-x-hidden bg-blue-50 dark:bg-[#334155] max-w-lg whitespace-nowrap dark:text-white"
+                id="text-area-params" placeholder="Put Params here ..."></textarea>
+                <div class="flex justify-between gap-1 mt-[1.2rem]">
+                    <button
+                    class="btn-copy-params p-2.5 rounded-lg text-sm w-[8rem] font-[500] bg-white/0 text-slate-900 ring-1 ring-slate-900/10 hover:bg-white/25 hover:ring-slate-900/15 hover:ring-slate-900/15 dark:hover:bg-white/25 dark:bg-slate-700 dark:text-slate-200 dark:border-transparent dardk:bg-blue-500 dardk:text-white">Copy
+                    Text     
+                    <i class="fa-regular fa-copy" ></i>
+                     </button>
+                    
+                     <button
+                     class="drop-shadow-md bborder-[0.5px] btn-shuffli-params border-[#334155] rounded-lg text-sm w-[8rem] btn-copy font-[500] bg-white/0 text-slate-900 ring-1 ring-slate-900/10 hover:bg-white/25 hover:ring-slate-900/15 dark:hover:bg-white/25 dark:bg-slate-700 dark:text-slate-200">Shuffle
+                     <i class="fa-solid fa-shuffle"></i>
+                 </button>
+                </div>
+            </div>
+             </div> 
+        </div>-->
+        <!-- END SHUFFLE PARAMS  -->
+
+        
+
+        <div class="">
             <h4 class=" text-center font-semibold mt-2 dark:text-white">Created by  zakariae belkasmi [ECM3]. © 2022-2023</h4>
             <h6 class=" text-center text-s ml-2 font-light mt-3 dark:text-white">Note : please refresh once in a while to keep updated </h6>
         </div>
@@ -149,5 +189,3 @@
 
 
 </html>
-
-
